@@ -22,3 +22,5 @@ Route::get(
 );
 
 Route::get('/users', [UsersController::class, 'index'])->name('users.index');
+Route::get('/ajax/role', [UsersController::class, 'role'])->name('users.role');
+Route::get('/ajax/user', [UsersController::class, 'user'])->name('users.user');

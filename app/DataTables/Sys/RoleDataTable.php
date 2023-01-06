@@ -1,8 +1,8 @@
 <?php
 
-namespace App\DataTables;
+namespace App\DataTables\Sys;
 
-use App\Models\User;
+use App\Models\Sys\Role;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class UsersDataTable extends DataTable
+class RoleDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -23,17 +23,17 @@ class UsersDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'users.action')
+            ->addColumn('action', 'role.action')
             ->setRowId('id');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\User $model
+     * @param \App\Models\Sys\Role $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(User $model): QueryBuilder
+    public function query(Role $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -46,24 +46,21 @@ class UsersDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('users-table')
+            ->setTableId('role-table')
             ->columns($this->getColumns())
-            ->minifiedAjax('/ajax/user')
-            // ->postAjax('/ajax/user')
-            // ->dom('Bfrtip')
+            ->minifiedAjax('/ajax/role')
+            // ->postAjax('/ajax/role')
             ->dom('rtip')
             ->orderBy(1)
             ->selectStyleSingle()
-            ->buttons(
-                [
-                    Button::make('excel'),
-                    Button::make('csv'),
-                    Button::make('pdf'),
-                    Button::make('print'),
-                    Button::make('reset'),
-                    Button::make('reload')
-                ]
-            );
+            ->buttons([
+                Button::make('excel'),
+                Button::make('csv'),
+                Button::make('pdf'),
+                Button::make('print'),
+                Button::make('reset'),
+                Button::make('reload')
+            ]);
     }
 
     /**
@@ -76,7 +73,6 @@ class UsersDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('name'),
-            Column::make('email'),
             Column::make('created_at'),
             Column::make('updated_at'),
             Column::computed('action')
@@ -94,6 +90,6 @@ class UsersDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Users_' . date('YmdHis');
+        return 'Role_' . date('YmdHis');
     }
 }

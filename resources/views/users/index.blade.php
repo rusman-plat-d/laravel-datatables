@@ -5,12 +5,14 @@
         <div class="card">
             <div class="card-header">Manage Users</div>
             <div class="card-body">
-                {{ $dataTable->table() }}
+                {{ $usersDataTable->html()->table() }}
+                {{ $roleDataTable->html()->table() }}
             </div>
         </div>
     </div>
 @endsection
 
 @push('scripts')
-    {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+    {{ $usersDataTable->html()->scripts(attributes: ['type' => 'module']) }}
+    {{ $roleDataTable->html()->scripts(attributes: ['type' => 'module']) }}
 @endpush

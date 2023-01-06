@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
+use Spatie\Permission\PermissionServiceProvider;
 use Yajra\DataTables\DataTablesServiceProvider;
 
 return [
@@ -188,6 +189,7 @@ return [
          */
 
         DataTablesServiceProvider::class,
+        PermissionServiceProvider::class,
 
         /*
          * Application Service Providers...
