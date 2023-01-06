@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
+use Yajra\DataTables\DataTablesServiceProvider;
 
 return [
 
@@ -185,6 +186,8 @@ return [
         /*
          * Package Service Providers...
          */
+
+        DataTablesServiceProvider::class,
 
         /*
          * Application Service Providers...
